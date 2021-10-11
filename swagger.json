@@ -1,0 +1,131 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Technical Challenge",
+    "description": "Crypto Symbol API"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Pairs"
+    },
+    {
+      "name": "Average"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/pairs": {
+      "get": {
+        "tags": [
+          "Pairs"
+        ],
+        "summary": "Get all pairs in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pairs"
+        ],
+        "summary": "Create new pair in system",
+        "parameters": [
+          {
+            "name": "symbol",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/average": {
+      "get": {
+        "tags": [
+          "Average"
+        ],
+        "summary": "Get average from symbol and lecture",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Average"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Pair": {
+      "properties": {
+        "id": {
+          "type": "integer",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Pairs": {
+      "type": "array",
+      "$ref": "#/definitions/Pair"
+    },
+    "Average": {
+      "properties": {
+        "average": {
+          "type": "number"
+        },
+        "numberOfLectures": {
+          "type": "integer"
+        }
+      }
+    },
+    "PairGetResponse": {
+      "properties": {
+        "result": {
+          "type": "array",
+          "items": {
+            "#ref": "#/definitions/Pair"
+          }
+        }
+      }
+    }
+  }
+}
