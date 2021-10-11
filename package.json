@@ -1,0 +1,19 @@
+{
+  "name": "technicall-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://github.com/carluis321/technical-challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Carluis Pateti",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^27.2.5"
+  }
+}
